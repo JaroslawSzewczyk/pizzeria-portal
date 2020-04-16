@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PageNav from '../MainLayout/MainLayout';
+import PageNav from '../PageNav/PageNav';
 
 const MainLayout = (props) => (
   <div>
