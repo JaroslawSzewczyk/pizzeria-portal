@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const Waiter = () => (
   <div className={styles.component}>
     <h2>Waiter</h2>
-    <Link to={`${process.env.PUBLIC_URL}/ordering/new`}>New Order</Link>
-    <Link to={`${process.env.PUBLIC_URL}/ordering/order/123abc`}>Order</Link>
+    <Link to={`${process.env.PUBLIC_URL}/order/new`}>New Order</Link>
+    <Link to={`${process.env.PUBLIC_URL}/order/123abc`}>Order</Link>
   </div>
 );
 

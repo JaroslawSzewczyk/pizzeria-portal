@@ -3,7 +3,7 @@ import styles from './OrderNew.module.scss';
 
 const OrderNew = () => (
   <div className={styles.component}>
-    <h2>OrderNew</h2>
+    <h2>New Order</h2>
   </div>
 );
 
