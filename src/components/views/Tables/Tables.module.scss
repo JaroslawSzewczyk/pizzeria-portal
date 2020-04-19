@@ -2,10 +2,11 @@
 
 .component {
   padding: $base-size;
+
+  .myHead {
+    margin-bottom: 50px;
+  }
 }
 
 
-.myHead {
-  margin: auto;
-  color: red;
-}
+
