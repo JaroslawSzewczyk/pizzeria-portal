@@ -21,6 +21,9 @@ const BookingNew = () => (
   <Card>
     <CardContent align="center">
       <Typography color="textPrimary" gutterBottom>
+        New Booking
+      </Typography>
+      <Typography color="textPrimary" gutterBottom>
         Costumer details:
         <CardActions >
           <Button className={styles.btn} size="small"><AddIcon /></Button>

@@ -29,7 +29,8 @@ const demoContent = [
 
 const Tables = () => (
   <Paper className={styles.component}>
-    <Button className={styles.btn} component={Link} to={`${process.env.PUBLIC_URL}/booking/new`}><AddIcon />Add new event</Button>
+    <Button className={styles.btn} component={Link} to={`${process.env.PUBLIC_URL}/booking/new`}><AddIcon />Add new book</Button>
+    <Button className={styles.btn} component={Link} to={`${process.env.PUBLIC_URL}/events/new`}><AddIcon />Add new event</Button>
     {demoContent.map(table => (
       <Table className={styles.myHead} key={table.id}>
         <TableHead>
@@ -55,7 +56,7 @@ const Tables = () => (
           {table.status.map((reservation) => (
             <TableRow key={reservation.id}>
               <TableCell>
-                <Button component={Link} to={`${process.env.PUBLIC_URL}/book/zxc123`}>{reservation.reservation}</Button>
+                <Button component={Link} to={`${process.env.PUBLIC_URL}${reservation.reservation === 'reservation' ? '/book/zxc123' : '/events/event/ghj456'}`}>{reservation.reservation}</Button>
               </TableCell>
               <TableCell>{reservation.time}</TableCell>
               <TableCell>{reservation.details}</TableCell>

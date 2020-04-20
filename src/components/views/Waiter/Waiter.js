@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const demoContent = [
   {id: '1', status: 'free', order: null},
@@ -53,6 +54,8 @@ const renderActions = status => {
 
 const Waiter = () => (
   <Paper className={styles.component}>
+    <Button className={styles.btn} component={Link} to={`${process.env.PUBLIC_URL}/order/123abc`}>Order</Button>
+    <Button className={styles.btn} component={Link} to={`${process.env.PUBLIC_URL}/order/new`}>Add new Order</Button>
     <Table>
       <TableHead>
         <TableRow>
