@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Kitchen.module.scss';
 
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
