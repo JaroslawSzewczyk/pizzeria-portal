@@ -19,7 +19,7 @@ const CHANGE_ORDER_STATUS = createActionName('CHANGE_ORDER_STATUS');
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const changeOrderStatus = payload => ({payload, type: CHANGE_ORDER_STATUS});
+export const changeOrderStatus = payload => ({ payload, type: CHANGE_ORDER_STATUS });
 
 /* reducer */
 export const fetchFromAPI = () => {
@@ -37,15 +37,14 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const sendOrderStatus = () => {
+export const sendOrderStatus = (id, status) => {
   return (dispatch) => {
-    dispatch(changeOrderStatus());
 
     Axios
-      .post(`${api.url}/${api.tables}`, {order: 23})
-      .then( res => {
-        console.log('res', res.data);
-        // console.log('res.data', res.data);
+      .put(`${api.url}/${api.tables}/${id}`, { status })
+      .then(res => {
+        dispatch(changeOrderStatus(res.data));
+        console.log('res', dispatch);
       });
   };
 };
@@ -79,9 +78,11 @@ export default function reducer(statePart = [], action = {}) {
         },
       };
     }
+
     case CHANGE_ORDER_STATUS: {
       return {
-
+        ...statePart,
+        id: action.payload.id,
       };
     }
     default:

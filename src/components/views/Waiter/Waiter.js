@@ -23,8 +23,18 @@ class Waiter extends React.Component {
   componentDidMount(){
     const { fetchTables } = this.props;
     fetchTables();
+  }
+
+  componentDidUpdate(id, status) {
     const { sendStatus } = this.props;
-    sendStatus();
+    sendStatus(id =1, status='bla');
+  }
+
+  handleChange() {
+    this.setState({
+      id: 1,
+      status: 'thinking',
+    });
   }
 
   renderActions(status){
@@ -32,7 +42,7 @@ class Waiter extends React.Component {
       case 'free':
         return (
           <>
-            <Button>thinking</Button>
+            <Button onClick={() => this.handleChange()}>thinking</Button>
             <Button>new order</Button>
           </>
         );
@@ -80,7 +90,7 @@ class Waiter extends React.Component {
     } else {
       return (
         <Paper className={styles.component}>
-          {console.log('waiter tables', tables)}
+          {console.log('waiter tables', )}
           <Table>
             <TableHead>
               <TableRow>
