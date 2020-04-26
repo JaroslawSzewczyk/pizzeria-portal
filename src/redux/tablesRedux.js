@@ -83,7 +83,9 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_ORDER_STATUS: {
       return {
         ...statePart,
+        id:  action.payload.id,
         status: action.payload.status,
+        order:  action.payload.order,
       };
     }
     default:

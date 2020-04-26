@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Waiter.module.scss';
 import Table from '@material-ui/core/Table';
@@ -9,12 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-const payload = {
-  'id': 1,
-  'status': 'bla',
-};
 
 class Waiter extends React.Component {
+
   static propTypes = {
     fetchTables: PropTypes.func,
     loading: PropTypes.shape({
@@ -30,16 +27,10 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  componentDidUpdate() {
+  changeStatus(payload) {
+    console.log('payload',payload.id, payload.status,payload.order);
     const { sendStatus } = this.props;
     sendStatus(payload);
-  }
-
-  handleChange() {
-    // this.setState({
-    //   id: 1,
-    //   status: 'thinking',
-    // });
   }
 
   renderActions(status){
@@ -47,8 +38,8 @@ class Waiter extends React.Component {
       case 'free':
         return (
           <>
-            <Button onClick={() => this.handleChange()}>thinking</Button>
-            <Button>new order</Button>
+            <Button onClick={(payload) =>this.changeStatus(payload = { id: 1, status: 'thinking', order: null })}>thinking</Button>
+            <Button onClick={(payload) =>this.changeStatus(payload = { id: 1, status: 'NewOrder', order: null })}>new order</Button>
           </>
         );
       case 'thinking':
@@ -95,7 +86,6 @@ class Waiter extends React.Component {
     } else {
       return (
         <Paper className={styles.component}>
-          {console.log('waiter tables', )}
           <Table>
             <TableHead>
               <TableRow>
