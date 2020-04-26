@@ -9,6 +9,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+const payload = {
+  'id': 1,
+  'status': 'bla',
+};
+
 class Waiter extends React.Component {
   static propTypes = {
     fetchTables: PropTypes.func,
@@ -25,16 +30,16 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  componentDidUpdate(id, status) {
+  componentDidUpdate() {
     const { sendStatus } = this.props;
-    sendStatus(id =1, status='bla');
+    sendStatus(payload);
   }
 
   handleChange() {
-    this.setState({
-      id: 1,
-      status: 'thinking',
-    });
+    // this.setState({
+    //   id: 1,
+    //   status: 'thinking',
+    // });
   }
 
   renderActions(status){

@@ -7,9 +7,10 @@ const mapStateToProps = (state) => ({
   loading: getLoadingState(state),
 });
 
+
 const mapDispatchToProps = (dispatch) => ({
   fetchTables: () => dispatch(fetchFromAPI()),
-  sendStatus: (id, status) => dispatch(sendOrderStatus(id, status)),
+  sendStatus: (payload) => dispatch(sendOrderStatus(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Waiter);

@@ -37,14 +37,15 @@ export const fetchFromAPI = () => {
   };
 };
 
-export const sendOrderStatus = (id, status) => {
+
+export const sendOrderStatus = (payload) => {
   return (dispatch) => {
 
     Axios
-      .put(`${api.url}/${api.tables}/${id}`, { status })
+      .put(`${api.url}/${api.tables}/${payload.id}`, payload)
       .then(res => {
         dispatch(changeOrderStatus(res.data));
-        console.log('res', dispatch);
+        console.log('res', payload);
       });
   };
 };
@@ -82,7 +83,7 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_ORDER_STATUS: {
       return {
         ...statePart,
-        id: action.payload.id,
+        status: action.payload.status,
       };
     }
     default:
