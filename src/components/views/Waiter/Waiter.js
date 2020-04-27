@@ -32,34 +32,34 @@ class Waiter extends React.Component {
     sendStatus(payload);
   }
 
-  renderActions(status){
+  renderActions(status, id){
     switch (status) {
       case 'free':
         return (
           <>
-            <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'thinking'})}>thinking</Button>
-            <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'ordered'})}>new order</Button>
+            <Button onClick={(payload) =>this.changeStatus({ id: id, status: 'thinking'})}>thinking</Button>
+            <Button onClick={(payload) =>this.changeStatus({ id: id, status: 'ordered'})}>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'ordered'})}>new order</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: id, status: 'ordered'})}>new order</Button>
         );
       case 'ordered':
         return (
-          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'prepared'})}>prepared</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: id, status: 'prepared'})}>prepared</Button>
         );
       case 'prepared':
         return (
-          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'delivered'})}>delivered</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: id, status: 'delivered'})}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'paid'})}>paid</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: id, status: 'paid'})}>paid</Button>
         );
       case 'paid':
         return (
-          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'free'})}>free</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: id, status: 'free'})}>free</Button>
         );
       default:
         return null;
@@ -111,7 +111,7 @@ class Waiter extends React.Component {
                     )}
                   </TableCell>
                   <TableCell>
-                    {this.renderActions(row.status)}
+                    {this.renderActions(row.status, row.id)}
                   </TableCell>
                 </TableRow>
               ))}
