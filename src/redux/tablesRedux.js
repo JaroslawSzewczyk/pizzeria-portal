@@ -3,7 +3,7 @@ import { api } from '../settings';
 
 /* selectors */
 export const getAll = ({tables}) => tables.data;
-export const getLoadingState = ({tables}) => tables.loading;
+export const getLoadingState = ({ tables }) => tables.loading;
 
 /* action name creator */
 const reducerName = 'tables';
@@ -39,13 +39,13 @@ export const fetchFromAPI = () => {
 
 
 export const sendOrderStatus = (payload) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
 
     Axios
-      .put(`${api.url}/${api.tables}/${payload.id}`, payload)
+      .put(`${api.url}/${api.tables}/${payload.id}`, { ...payload })
       .then(res => {
         dispatch(changeOrderStatus(res.data));
-        console.log('res', payload);
+        // console.log('res', payload);
       });
   };
 };
@@ -83,9 +83,7 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_ORDER_STATUS: {
       return {
         ...statePart,
-        id:  action.payload.id,
-        status: action.payload.status,
-        order:  action.payload.order,
+        data: statePart.data.map(item => item.id === action.payload.id ? { ...action.payload } : item),
       };
     }
     default:

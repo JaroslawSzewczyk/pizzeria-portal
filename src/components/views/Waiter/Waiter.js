@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Waiter.module.scss';
 import Table from '@material-ui/core/Table';
@@ -28,7 +28,6 @@ class Waiter extends React.Component {
   }
 
   changeStatus(payload) {
-    console.log('payload',payload.id, payload.status,payload.order);
     const { sendStatus } = this.props;
     sendStatus(payload);
   }
@@ -38,29 +37,29 @@ class Waiter extends React.Component {
       case 'free':
         return (
           <>
-            <Button onClick={(payload) =>this.changeStatus(payload = { id: 1, status: 'thinking', order: null })}>thinking</Button>
-            <Button onClick={(payload) =>this.changeStatus(payload = { id: 1, status: 'NewOrder', order: null })}>new order</Button>
+            <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'thinking'})}>thinking</Button>
+            <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'ordered'})}>new order</Button>
           </>
         );
       case 'thinking':
         return (
-          <Button>new order</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'ordered'})}>new order</Button>
         );
       case 'ordered':
         return (
-          <Button>prepared</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'prepared'})}>prepared</Button>
         );
       case 'prepared':
         return (
-          <Button>delivered</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'delivered'})}>delivered</Button>
         );
       case 'delivered':
         return (
-          <Button>paid</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'paid'})}>paid</Button>
         );
       case 'paid':
         return (
-          <Button>free</Button>
+          <Button onClick={(payload) =>this.changeStatus({ id: 1, status: 'free'})}>free</Button>
         );
       default:
         return null;
